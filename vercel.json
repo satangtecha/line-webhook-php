@@ -2,14 +2,14 @@
       "version": 2,
       "builds": [
         {
-          "src": "api/webhook.php",
+          "src": "apple/webhook.php",
           "use": "@vercel/php"
         }
       ],
       "routes": [
         {
-          "src": "/api/(.*)",
-          "dest": "api/webhook.php"
+          "src": "/apple/webhook.php",
+          "dest": "apple/webhook.php"
         }
       ]
     }
