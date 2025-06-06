@@ -3,7 +3,7 @@
       "builds": [
         {
           "src": "apple/webhook.php",
-          "use": "@vercel/php"
+          "use": "@php-runtime/vercel-php"
         }
       ],
       "routes": [
