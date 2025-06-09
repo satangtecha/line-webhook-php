@@ -1,12 +1,15 @@
     <?php
     $logFile = __DIR__ . '/webhook_activity.log';
-    $logMessage = date('Y-m-d H:i:s') . " - Request received!\n";
-    $logMessage .= "Method: " . $_SERVER['REQUEST_METHOD'] . "\n";
-    $logMessage .= "Headers: " . json_encode(apache_request_headers()) . "\n"; // บันทึก Headers ทั้งหมด
-    $logMessage .= "Input: " . file_get_contents('php://input') . "\n"; // บันทึก Body ของ Request
-    file_put_contents($logFile, $logMessage, FILE_APPEND);
-
-    http_response_code(200); // ตอบกลับ 200 OK เสมอ
-    echo "OK"; // ส่งข้อความตอบกลับ
+    $message = "Test Log: " . date('Y-m-d H:i:s') . " - This is a test log entry.\n";
+    
+    // ลองเขียน Log
+    file_put_contents($logFile, $message, FILE_APPEND);
+    
+    // แสดงผลบนหน้าเว็บ (จะเห็นเมื่อเข้าถึง URL โดยตรง)
+    echo "Hello PHP from Render! Check logs for '" . $logFile . "'\n";
+    echo "Log written: " . ($message) . "\n"; // แสดงข้อความที่เขียน
+    
+    // ตั้งค่า Response Code ให้เป็น 200 เสมอ
+    http_response_code(200);
     ?>
     
