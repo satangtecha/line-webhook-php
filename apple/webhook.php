@@ -27,6 +27,13 @@ if (!is_null($lineEvents) && isset($lineEvents['events']) && isset($_SERVER['HTT
     file_put_contents($logFile, $logMessage, FILE_APPEND);
 
     foreach ($lineEvents['events'] as $event) {
+        // ดึง User ID ของผู้ส่งและบันทึกลง Log (เพิ่มตรงนี้)
+        if (isset($event['source']['userId'])) {
+            $senderUserId = $event['source']['userId'];
+            $logMessage = date('Y-m-d H:i:s') . " - Sender User ID: " . $senderUserId . "\n";
+            file_put_contents($logFile, $logMessage, FILE_APPEND);
+        }
+
         // ตรวจสอบว่าเป็นข้อความประเภท text และเป็นคำว่า "เชื่อมต่อหรือยัง"
         if ($event['type'] == 'message' && $event['message']['type'] == 'text' && strtolower($event['message']['text']) == 'เชื่อมต่อหรือยัง') {
             $replyToken = $event['replyToken'];
@@ -49,7 +56,7 @@ if (!is_null($lineEvents) && isset($lineEvents['events']) && isset($_SERVER['HTT
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && 
     isset($_SERVER['CONTENT_TYPE']) && 
     strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false &&
-    !isset($_SERVER['HTTP_X_LINE_SIGNATURE'])) { // <-- แก้ไขตรงนี้แล้ว
+    !isset($_SERVER['HTTP_X_LINE_SIGNATURE'])) {
     
     $pythonInput = file_get_contents('php://input');
     $pythonData = json_decode($pythonInput, true);
