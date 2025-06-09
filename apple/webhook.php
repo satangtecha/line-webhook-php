@@ -27,7 +27,7 @@ if (!is_null($lineEvents) && isset($lineEvents['events']) && isset($_SERVER['HTT
     file_put_contents($logFile, $logMessage, FILE_APPEND);
 
     foreach ($lineEvents['events'] as $event) {
-        // ดึง User ID ของผู้ส่งและบันทึกลง Log (เพิ่มตรงนี้)
+        // ดึง User ID ของผู้ส่งและบันทึกลง Log
         if (isset($event['source']['userId'])) {
             $senderUserId = $event['source']['userId'];
             $logMessage = date('Y-m-d H:i:s') . " - Sender User ID: " . $senderUserId . "\n";
