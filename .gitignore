@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.streamlit/
+venv/
+.vscode/
+
+# Database
+system_monitor.db
+*.db
+
+# Compiled files
+dist/
+build/
+*.spec
+
+# Configuration (Optional, if it contains sensitive data not to be shared publicly)
+ config.json 

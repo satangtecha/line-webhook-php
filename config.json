@@ -1,0 +1,22 @@
+{
+  "thresholds": {
+    "cpu_limit": 48,
+    "ram_limit": 100,
+    "disk_limit": 55,
+    "battery_low_limit": 20
+  },
+  "alert_settings": {
+    "line_webhook_url": "https://line-webhook-php.onrender.com",
+    "line_target_user_id": "U4d66cb0a61bc7385dd2407080f64bb42"
+  },
+  "trend_analysis_settings": {
+    "lookback_minutes": 5,
+    "min_increase_percent": 10
+  },
+  "prediction_settings": {
+    "prediction_lookback_minutes": 30,
+    "prediction_alert_threshold_factor": 1.1,
+    "prediction_model": "ARIMA",
+    "prediction_retrain_interval_minutes": 15
+  }
+}
